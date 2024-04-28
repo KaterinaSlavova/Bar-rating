@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Bar_rating.Models.Reviews>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reviews</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="text-center">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Bar:@Html.DisplayFor(modelItem => item.BarId)</h4>
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Content) Rating:@Html.DisplayFor(modelItem => item.Rate)</p>
+                    </div>
+                    <div class="card-footer" style="background-color: #818589;">
+                        <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.Id">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                        </a>
+                        <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@item.Id">
+                            <i class="fa-solid fa-info"></i> Details
+                        </a>
+                        <a asp-action="Delete" class="btn btn-outline-primary" asp-route-id="@item.Id">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
